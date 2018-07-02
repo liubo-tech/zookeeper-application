@@ -27,7 +27,7 @@ public class Application {
 
         ExecutorService es = Executors.newFixedThreadPool(5);
 
-        for (int i=0;i<10;i++){
+        for (int i=0;i<5;i++){
             es.execute(new BarrierExample("149.28.37.147:2181"));
         }
         es.shutdown();
