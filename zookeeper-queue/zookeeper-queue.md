@@ -13,7 +13,7 @@ public class Producer implements Runnable,Watcher {
 
     public Producer(String address){
         try {
-            this.zk = new ZooKeeper(address,3000,null);
+            this.zk = new ZooKeeper(address,3000,this);
         } catch (IOException e) {
             e.printStackTrace();
         }
