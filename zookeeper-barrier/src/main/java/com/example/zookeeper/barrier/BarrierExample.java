@@ -12,6 +12,10 @@ public class BarrierExample implements Runnable,Watcher {
 
     private ZooKeeper zk;
 
+    /**
+     * 构造函数
+     * @param address  zookeeper地址
+     */
     public BarrierExample(String address){
         try {
             this.zk = new ZooKeeper(address,3000,this);
@@ -24,13 +28,16 @@ public class BarrierExample implements Runnable,Watcher {
     @Override
     public void run() {
         try {
+            //监听Barrier节点，并设置观察器
             Stat stat = zk.exists("/zookeeper/barrier", true);
+            //Barrier节点存在，线程等待
             if (stat!=null){
                 System.out.println(Thread.currentThread().getName()+"——barrier节点存在，线程等待");
                 synchronized (this){
                     this.wait();
                 }
             }
+            //模拟业务代码
             businessCode();
         } catch (KeeperException e) {
             e.printStackTrace();
@@ -39,6 +46,9 @@ public class BarrierExample implements Runnable,Watcher {
         }
     }
 
+    /**
+     * 模拟业务代码
+     */
     private void businessCode() {
         try {
             Thread.sleep(2000);
@@ -49,11 +59,18 @@ public class BarrierExample implements Runnable,Watcher {
 
     }
 
+    /**
+     * 观察器
+     * @param event
+     */
     @Override
     public void process(WatchedEvent event) {
+        //不是节点删除事件，返回
         if (event.getType() != Event.EventType.NodeDeleted) return;
         try {
+            //查看Barrier节点是否存在
             Stat stat = zk.exists("/zookeeper/barrier", true);
+            //Barrier节点消失，唤起所有等待线程
             if (stat==null){
                 System.out.println(Thread.currentThread().getName()+"——barrier节点消失，唤起所有线程");
                 synchronized (this) {

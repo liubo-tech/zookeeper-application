@@ -11,11 +11,14 @@ import java.util.concurrent.Executors;
 
 public class Application {
     public static void main(String[] args) {
+        //设置log级别为Error
         setLog();
 
+        //创建5个线程
         ExecutorService es = Executors.newFixedThreadPool(5);
 
         for (int i=0;i<5;i++){
+            //执行BarrierExample
             es.execute(new BarrierExample("149.28.37.147:2181"));
         }
         es.shutdown();
@@ -23,6 +26,9 @@ public class Application {
         System.out.println("主线程完成！");
     }
 
+    /**
+     * 设置log级别为Error
+     */
     public static void setLog(){
         //1.logback
         LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
