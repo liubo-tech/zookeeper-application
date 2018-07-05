@@ -9,6 +9,7 @@
     <modules>
         <module>zookeeper-barrier</module>
         <module>zookeeper-queue</module>
+        <module>zookeeper-election</module>
     </modules>
     <packaging>pom</packaging>
 

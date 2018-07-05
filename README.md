@@ -76,3 +76,4 @@ ZooKeeper的设计目标之一是提供一个非常简单的编程接口。因�
 
 * [Zookeeper应用之——栅栏（barrier）](/zookeeper-barrier/zookeeper-barrier.md)
 * [Zookeeper应用之——队列（Queue）](/zookeeper-queue/zookeeper-queue.md)
+* [Zookeeper应用之——选举（Election）](/zookeeper-election/election.md)
