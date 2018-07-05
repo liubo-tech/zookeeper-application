@@ -1,6 +1,6 @@
 # Zookeeper应用之——选举（Election）
 
-**_请注意，此篇文章并不是介绍Zookeeper集群中Leader的选举机制，而是应用程序使用Zookeeper作为选举的应用。_**
+**_请注意，此篇文章并不是介绍Zookeeper集群内部Leader的选举机制，而是应用程序使用Zookeeper作为选举。_**
 
 使用Zookeeper进行选举，主要用到了Znode的两个性质：
 1. 临时节点（EPHEMERAL）
