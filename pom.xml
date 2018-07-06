@@ -10,6 +10,7 @@
         <module>zookeeper-barrier</module>
         <module>zookeeper-queue</module>
         <module>zookeeper-election</module>
+        <module>zookeeper-lock</module>
     </modules>
     <packaging>pom</packaging>
 
